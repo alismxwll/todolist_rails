@@ -1,0 +1,22 @@
+<h1>Update Task</h1>
+
+<% if @task.errors.any? %>
+  <h2>We had a problem...</h2>
+  <ul>
+    <% @task.errors.full_messages.each { |message| %> <li><%= message %></li> <% } %>
+  </ul>
+<% end %>
+
+
+<form action='/tasks/<%= @task.id %>' method='post'>
+  <input name='_method' type='hidden' value='patch'>
+  <label for='task_name'>Task</label>
+  <input id='task_name' name='task[task]' type='text' value='<%= @task.task %>'>
+  
+  <label for='task_note'>Note</label>
+  <input id='task_note' name='task[note]' type='text' value='<%= @task.note %>'>
+  <p>______________________________________</p>
+  
+  <button>Update</button>
+  
+</form>
